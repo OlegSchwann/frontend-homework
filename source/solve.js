@@ -15,14 +15,14 @@ Xотелось решить за наименьшее число строк к�
 
 "use strict";
 
-let AllowedSymbols = RegExp(/^[\d\-+*x()\s]+$/);
-let FunctionCalls = RegExp(/x\d*\s*\(/);
+const allowedSymbols = RegExp(/^[\d\-+*x()\s]+$/);
+const functionCalls = RegExp(/x\d*\s*\(/);
 
 const solve = (expression, x) => {
-    if (!AllowedSymbols.test(expression)) {
+    if (!allowedSymbols.test(expression)) {
         throw SyntaxError(`Only 0123456789+-*x() characters can be in an expression, but got ${expression}.`);
     }
-    if (FunctionCalls.test(expression)) {
+    if (functionCalls.test(expression)) {
         throw SyntaxError(`'x' ca't be a function, but got ${expression}.`);
     }
     if (typeof(x) !== 'number' && typeof(x) !== 'undefined') {
